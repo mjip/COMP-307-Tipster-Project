@@ -1,0 +1,138 @@
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    height: 250px;
+    background-color: #ffffff;
+    background-image: url("../img/nebula.jpg");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative
+}
+
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    font-family: 'Arial';
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    background: transparent;
+    float: right;
+    clear: right;
+    position:absolute;
+    bottom:0; right:0;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {background-color: #0a915d;}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {display: none;}
+
+body {
+    background: #5e7557;
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, #465841, #acbea7, #465841);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(left, #465841, #acbea7, #465841);
+    /* For Fx 3.6 to 15 */
+    background: -moz-linear-gradient(left, #465841, #acbea7, #465841);
+    /* Standard syntax */
+    background: linear-gradient(to right, #465841, #acbea7, #465841); 
+    width: 1050px;
+    margin: 0 auto;
+    font-family: 'Arial';
+} 
+
+#bannertxt {
+    font-family: 'Verdana';
+    color: #ffffff;
+    font-size: 60px;
+    position: absolute;
+    bottom: 0;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+#bannerbyline {
+    font-family: 'Verdana';
+    color: #ffffff;
+    font-size: 20px;
+    position: absolute;
+    padding-left: 220px;
+    padding-bottom: 10px;
+    bottom: 0;
+    display: inline-block;
+}
+
+#main {
+    padding: 0 45px 0 15px;
+    display: inline-block;
+    background-color: #ece5ed;
+    font-family: 'Verdana';
+}
+
+#headline {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+#desc {
+    font-size: 15px;
+    width: 75%;
+    text-align: justify;
+    padding-left: 35px;
+}
+
+footer {
+    height: 200px;
+    width: 100%;
+    background-color: #ffffff;
+    background-image: url("../img/nebula.jpg");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+#info {
+    position: absolute;
+    color: #ffffff;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+#admin {
+    font-size: 12px;
+    position: absolute;
+    color: #ffffff;
+    overflow: hidden;
+    float: right;
+    clear: right;
+    bottom: 0; right: 0;
+    padding-right: 10px;
+}
+
+#admin a {
+    text-decoration: none;
+    color: #ffffff;
+}

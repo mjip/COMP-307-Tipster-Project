@@ -1,0 +1,224 @@
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    height: 250px;
+    background-color: #ffffff;
+    background-image: url("../img/nebula.jpg");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative
+}
+
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    font-family: 'Arial';
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    background: transparent;
+    float: right;
+    clear: right;
+    position:absolute;
+    bottom:0; right:0;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {background-color: #0a915d;}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {display: none;}
+
+body {
+    background: #5e7557;
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left, #465841, #acbea7, #465841);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(left, #465841, #acbea7, #465841);
+    /* For Fx 3.6 to 15 */
+    background: -moz-linear-gradient(left, #465841, #acbea7, #465841);
+    /* Standard syntax */
+    background: linear-gradient(to right, #465841, #acbea7, #465841); 
+    width: 1050px;
+    margin: 0 auto;
+    font-family: 'Arial';
+} 
+
+#bannertxt {
+    font-family: 'Verdana';
+    color: #ffffff;
+    font-size: 60px;
+    position: absolute;
+    bottom: 0;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+#bannerbyline {
+    font-family: 'Verdana';
+    color: #ffffff;
+    font-size: 20px;
+    position: absolute;
+    padding-left: 220px;
+    padding-bottom: 10px;
+    bottom: 0;
+    display: inline-block;
+}
+
+#formContainer {
+    padding: 0 45px 0 15px;
+    background-color: #ece5ed;
+    font-family: 'Verdana';
+    float: left;
+    width: 94.2%;
+    min-height: 550px;
+    display: inline-block;
+}
+
+#headline {
+    padding-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+#desc {
+    font-size: 15px;
+    width: 75%;
+    text-align: justify;
+    padding-top: 10px;
+    padding-left: 35px;
+    padding-bottom: 20px;
+}
+
+footer {
+    height: 200px;
+    width: 100%;
+    background-color: #ffffff;
+    background-image: url("../img/nebula.jpg");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+#info {
+    position: absolute;
+    color: #ffffff;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+#admin {
+    font-size: 12px;
+    position: absolute;
+    color: #ffffff;
+    overflow: hidden;
+    float: right;
+    clear: right;
+    bottom: 0; right: 0;
+    padding-right: 10px;
+}
+
+#form {
+    padding-left: 20px;
+}
+
+
+ 
+.fancy-theme-gray .fancy-field-radio .fancy-field-text:hover .fancy-field-radio-input {
+    background-position: 0 0px;
+}
+ 
+.fancy-theme-gray .fancy-field-radio-on:hover .fancy-field-radio-input {
+    background-position: 0 -14px !important;
+}
+ 
+.fancy-theme-gray .fancy-field .fancy-field-label {
+    font-family: "Verdana";
+    font-size: 12px;
+    font-weight: 300;
+}
+ 
+.fancy-theme-gray .fancy-button {
+    background: #0a915d;
+    border-radius: 20px;
+    font-family: 'open sans', sans-serif;
+    font-size: 14px;
+    font-stretch: normal;
+    font-variant: normal;
+    font-weight: normal;
+    padding: 0 15px;
+    -webkit-transition: all 400ms ease;
+    -moz-transition: all 400ms ease;
+    -ms-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+    transition: all 400ms ease;
+}
+ 
+.fancy-theme-gray .fancy-button:hover {
+    background-color: #11ee99;
+}
+ 
+.fancy-theme-gray .fancy-panel-header {
+    background: #cacaca;
+    background: #e2e2e2;
+}
+ 
+.fancy-theme-gray .fancy-panel-header .fancy-panel-header-text {
+    color: #737373;
+    font-family: "Verdana";
+    font-size: 14px;
+    font-weight: bold;
+}
+ 
+.fancy-theme-gray .fancy-field .fancy-field-text-input {
+    border: 1px solid #d9d9d9;
+}
+ 
+.fancy-theme-gray .fancy-combo table {
+    border: 1px solid #d9d9d9;
+}
+ 
+.fancy-theme-gray .fancy-textarea .fancy-textarea-text-input {
+    border: 1px solid #d9d9d9;
+}
+ 
+.fancy-theme-gray.fancy-panel .fancy-panel-body {
+    border: 1px solid #f2f2f2;
+}
+ 
+.fancy-theme-gray .fancy-form {
+    background-color: #fff;
+}
+ 
+.fancy-theme-gray.fancy-panel .fancy-panel-bbar {
+    background-color: #fff;
+}
+ 
+.fancy-theme-gray.fancy-combo-result-list li.fancy-combo-list-active {
+    background-color: #5897fb;
+}
+
+#admin a {
+    text-decoration: none;
+    color: #ffffff;
+}
