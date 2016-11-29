@@ -128,7 +128,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (0,'theft','Theft'),(1,'scam','Scam'),(2,'harrasment','Harrasment'),(3,'breakin','Break-In'),(4,'sa','Sexual Assault'),(5,'pa','Physical Assault'),(6,'other','Other');
+INSERT INTO `tags` VALUES (0,'theft','Theft'),(1,'scam','Scam'),(2,'harassment','Harassment'),(3,'breakin','Break-In'),(4,'sa','Sexual Assault'),(5,'pa','Physical Assault'),(6,'other','Other');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-29 13:13:40
+-- Dump completed on 2016-11-29 13:22:30
