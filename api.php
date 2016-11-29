@@ -1,4 +1,4 @@
-<?php
+<?phperror_reporting(E_ERROR | E_PARSE);
 //Connect to DB
 define('HOSTNAME', 			'localhost');
 define('NAME', 				'Tipster');
@@ -6,7 +6,6 @@ define('USERNAME', 			'a');
 define('PASSWORD', 			'2MZv4n3zEcbuRatT');
 define('PORT', 				'');
 
-$username='';
 $method='';
 
 if (isset($_POST['method'])) $method = $_POST['method'];
@@ -48,24 +47,26 @@ function db_connect() {
 }
 
 function login(){
-	if (isset($_GET['username'])) $username = $_GET['username'];
-	if ($username<>'') {
-		
-	}
-	if ($db = connect()) {
+	$username='';
+	$password='';
+	if (isset($_POST['username'])) $username = $_POST['username'];
+	if (isset($_POST['password'])) $password = $_POST['password'];
+	if ($username<>'' && $password <> '') {
+		if ($db = db_connect()) {
 
-		$query = "SELECT username FROM admins WHERE username='". $username."'AND password= '' ";
+		$query = "SELECT username FROM admin WHERE username='". $username."'AND password= '". $password."' ";
 		$res = mysql_query($query,$db);
 		$row = mysql_fetch_assoc($res);
 		if (mysql_num_rows($res) == 1) {
-			return true;			
+			echo '{"result":"OK","login":"login_accepted"}'		
 		}
 		else{
-			sleep(3);
 			echo '{"result":"ERROR","error_message":"invalid_login"}';
 		}
 	}
-	return false;
+	}
+	
+	
 
 }
 
