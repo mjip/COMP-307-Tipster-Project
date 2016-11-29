@@ -74,8 +74,8 @@ window.onload = function (){
 	  			text: 'Scam',
 	  			value: 'scam'
 	  		},{
-	  			text: 'Harrassment',
-	  			value: 'harrassment'
+	  			text: 'Harassment',
+	  			value: 'harassment'
 	  		},{
 	  			text: 'Break-In',
 	  			value: 'breakin'
