@@ -15,3 +15,22 @@ function prepareList() {
 $(document).ready( function() {
     prepareList()
 });
+
+$.ajax({    
+type: "POST",
+url: "http://localhost/api.php",
+data: "method=getUnapprovedPosts",
+success: function(response){
+    var result=JSON.parse(response);
+    var content=JSON.parse(response).getUnapprovedPosts;
+    $.each(result.getUnapprovedPosts, function(i, value) {
+        /*
+            alert(i+" "+value.id);
+            alert(i+" "+value.title);
+            alert(i+" "+value.body);
+            alert(i+" "+value.location_id);
+            alert(i+" "+value.tag_id);
+            alert(i+" "+value.date_posted);*/
+        });
+    }
+});

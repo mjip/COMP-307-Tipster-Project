@@ -28,7 +28,7 @@ window.onload = function (){
 	  	height: 440,
 	  	inputWidth: 220,
 	  	labelWidth: 100,
-	  	url: '',
+	  	url: 'http://localhost/api.php',
 	  	method: 'POST',
 	  	defaults: {
 	  		type: 'string'
@@ -93,8 +93,24 @@ window.onload = function (){
 	  	buttons: [{
 	  		text: 'Submit',
 	  		handler: function(){
-	  			myForm.submit();
-	  			this.clear();
+	  			myForm.submit({
+                params: {
+                    method: 'submitPost',
+                    title: myForm.get('title'),
+                    body:myForm.get('tip'),
+                    location_id: myForm.get('borough'),
+                    tag_id: myForm.get('category'),
+
+                },
+                
+                success: function(result, status, xhr){
+                    alert(JSON.parse(result).result);
+      
+                },
+                error: function(xhr,status,error){
+                }
+            });
+	  			//this.clear();
 	  		}
 	  	}]
 	});
