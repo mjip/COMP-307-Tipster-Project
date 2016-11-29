@@ -30,7 +30,13 @@ window.onload = function(){
                     success: function(result, status, xhr){
                         console.log('success');
                         console.log(result);
-                        //window.location = 'http://localhost/tipster/admin/admin.html';
+                        obj = JSON.parse(result);
+                        if (obj.result == 'OK') {
+                            window.location = 'http://localhost/tipster/admin/admin.html';
+                        }
+                        else {
+                            console.log('Incorrect Login Info');
+                        }
                     },
                     error: function(xhr,status,error){
                         console.log('error');
