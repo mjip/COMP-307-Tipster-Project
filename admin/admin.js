@@ -18,12 +18,13 @@ $(document).ready( function() {
 
 $.ajax({    
 type: "POST",
-url: "http://localhost/api.php",
+url: "http://localhost/tipster/api.php",
 data: "method=getUnapprovedPosts",
 success: function(response){
     var result=JSON.parse(response);
     var content=JSON.parse(response).getUnapprovedPosts;
     $.each(result.getUnapprovedPosts, function(i, value) {
+        alert(i+" "+value.id);
         /*
             alert(i+" "+value.id);
             alert(i+" "+value.title);
