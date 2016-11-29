@@ -5,7 +5,7 @@ window.onload = function(){
         height: 220,
         inputWidth: 200,
         labelWidth: 75,
-        url: '',
+        url: 'http://localhost/tipster/api.php',
         method: 'POST',
         defaults: {
             type: 'string'
@@ -21,7 +21,22 @@ window.onload = function(){
         buttons: [{
             text: 'Login',
             handler: function(){
-                myForm.submit();
+                myForm.submit({
+                    params: {
+                        method: 'login',
+                        username: myForm.get('username'),
+                        password: myForm.get('password'),
+                    },
+                    success: function(result, status, xhr){
+                        console.log('success');
+                        console.log(result);
+                        //window.location = 'http://localhost/tipster/admin/admin.html';
+                    },
+                    error: function(xhr,status,error){
+                        console.log('error');
+                        console.log(arguments);
+                    }
+                });
                 this.clear();
             }
         }]
