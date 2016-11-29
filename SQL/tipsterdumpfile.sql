@@ -29,7 +29,8 @@ CREATE TABLE `admin` (
   `date_created` date NOT NULL,
   `date_modified` date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username` (`username`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +40,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (0,'lvancraen','1234567890','2016-11-29',NULL);
+INSERT INTO `admin` VALUES (0,'lvancraen','1234567890','2016-11-29',NULL),(1,'mjip','1234567890','2016-11-29',NULL),(2,'ellxandra','1234567890','2016-11-29',NULL);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +55,8 @@ CREATE TABLE `geolocations` (
   `id` int(11) NOT NULL,
   `name_borough` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name_borough` (`name_borough`)
+  UNIQUE KEY `name_borough` (`name_borough`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -84,8 +86,14 @@ CREATE TABLE `post` (
   `tag_id` int(11) NOT NULL,
   `reviewed_by_id` int(11) DEFAULT NULL,
   `approved` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `location_id` (`location_id`),
+  KEY `tag_id` (`tag_id`),
+  KEY `reviewed_by_id` (`reviewed_by_id`),
+  CONSTRAINT `post_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `geolocations` (`id`),
+  CONSTRAINT `post_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`),
+  CONSTRAINT `post_ibfk_3` FOREIGN KEY (`reviewed_by_id`) REFERENCES `admin` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +117,8 @@ CREATE TABLE `tags` (
   `tag` varchar(20) NOT NULL,
   `tag_value` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `tag` (`tag`)
+  UNIQUE KEY `tag` (`tag`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,7 +128,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (1,'scam','Scam'),(2,'harrasment','Harrasment'),(3,'breakin','Break-In'),(4,'sa','Sexual Assault'),(5,'pa','Physical Assault'),(6,'other','Other'),(10,'theft','Theft');
+INSERT INTO `tags` VALUES (0,'theft','Theft'),(1,'scam','Scam'),(2,'harrasment','Harrasment'),(3,'breakin','Break-In'),(4,'sa','Sexual Assault'),(5,'pa','Physical Assault'),(6,'other','Other');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-29 12:46:11
+-- Dump completed on 2016-11-29 13:13:40
