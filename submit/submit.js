@@ -92,16 +92,12 @@ window.onload = function (){
 	  	}],
 	  	buttons: [{
 	  		text: 'Submit',
-			handler: function(){
-	  			document.write(escape('title'));
-                		document.write(escape('tip'));
-	  		},
 	  		handler: function(){
 	  			myForm.submit({
                 params: {
                     method: 'submitPost',
-                    title: myForm.get('title'),
-                    body:myForm.get('tip'),
+                    title: escape(myForm.get('title')),
+                    body: escape(myForm.get('tip')),
                     location_id: myForm.get('borough'),
                     tag_id: myForm.get('category'),
 
