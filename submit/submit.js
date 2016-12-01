@@ -105,6 +105,7 @@ window.onload = function (){
                 
                 success: function(result, status, xhr){
                     alert(JSON.parse(result).result);
+                    this.clear();
       
                 },
                 error: function(xhr,status,error){

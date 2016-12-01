@@ -1,4 +1,4 @@
-<?phperror_reporting(E_ERROR | E_PARSE);
+<?php error_reporting(E_ERROR | E_PARSE);
 //Connect to DB
 define('HOSTNAME', 			'localhost');
 define('NAME', 				'Tipster');
@@ -58,7 +58,7 @@ function login(){
 		$res = mysql_query($query,$db);
 		$row = mysql_fetch_assoc($res);
 		if (mysql_num_rows($res) == 1) {
-			echo '{"result":"OK","login":"login_accepted"}'		
+			echo '{"result":"OK","login":"login_accepted"}'	;	
 		}
 		else{
 			echo '{"result":"ERROR","error_message":"invalid_login"}';

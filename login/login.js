@@ -12,7 +12,11 @@ window.onload = function(){
         },
         items: [{
             label: 'Username',
-            name: 'username'
+            name: 'username',
+            valid: {
+	  			blank: false,
+	  			blankText: 'Required'
+	  		}
         },{
             label: 'Password',
             name: 'password',
@@ -35,6 +39,7 @@ window.onload = function(){
                             window.location = 'http://localhost/tipster/admin/admin.html';
                         }
                         else {
+                            alert("Incorrect Login Info");
                             console.log('Incorrect Login Info');
                         }
                     },
