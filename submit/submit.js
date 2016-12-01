@@ -47,7 +47,6 @@ window.onload = function (){
 	  		height: 20,
 	  		emptyText: 'Title',
 	  		name: 'title',
-			value: '<?php print htmlentities($title, ENT_QUOTES); ?>',
 	  		valid: {
 	  			blank: false,
 	  			blankText: 'Required'
@@ -59,7 +58,6 @@ window.onload = function (){
 	  		emptyText: 'Write Tip Here',
 	  		label: false,
 	  		name: 'tip',
-		    	value: '<?php print htmlentities($tip, ENT_QUOTES); ?>',
 	  		valid: {
 	  			blank: false,
 	  			blankText: 'Required'
@@ -95,6 +93,8 @@ window.onload = function (){
 	  	buttons: [{
 	  		text: 'Submit',
 	  		handler: function(){
+				document.write(escape('title'));
+                		document.write(escape('tip'));
 	  			myForm.submit({
                 params: {
                     method: 'submitPost',
