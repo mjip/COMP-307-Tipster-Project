@@ -23,11 +23,21 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         var button = document.createElement("input");
         button.type = "button";
         button.value = "OK";
-        button.click(approve());
+        button.onclick = (function(a) {
+            return function() {
+               approve(a,true);
+            };
+        })(id[i]);
+
         var notok = document.createElement("input");
         notok.type = "button";
         notok.value = "X";
         notok.style.color='red';
+        notok.onclick = (function(a) {
+            return function() {
+               approve(a,false);
+            };
+        })(id[i]);
         td = tr.insertCell();
         td.appendChild(button);
         td.appendChild(notok);
@@ -43,7 +53,7 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         
 }
 function getPosts() {
-   
+      
     $.ajax({    
         type: "POST",
         url: "http://localhost/tipster/api.php",
@@ -53,7 +63,8 @@ function getPosts() {
             var content=JSON.parse(response).getUnapprovedPosts;
             var k;
             var i=0;
-            //alert(id.length);
+            
+            
             $.each(content, function(k, value){ 
                 //append(id,content[k].id);
                 
@@ -67,12 +78,46 @@ function getPosts() {
                 
             }); 
           makeTable(id,title,body,location_id,tag_id,date_posted);
+        },
+        error: function(xhr,rsult){  
+            alert(rsult);
         }
     });
   
 }
-function approve(){
-    alert("yo");
+function approve(i,bool){
+    if(bool===false){
+        $.ajax({    
+        type: "POST",
+        url: "http://localhost/tipster/api.php",
+        data: 'method=setApproved'+'&id='+i,
+        success: function(response){
+            var result=JSON.parse(response);     
+            alert(result.result);
+            
+        },
+        error: function(xhr){  
+            alert(xhr);
+        }
+    });
+    }
+    else if(bool === true){
+        
+        $.ajax({    
+        type: "POST",
+        url: "http://localhost/tipster/api.php",
+        data: 'method=setDisapproved'+'&id='+i,
+        success: function(response){
+            var result=JSON.parse(response);     
+            alert(result.result);
+            
+        },
+        error: function(xhr){  
+            alert(xhr);
+        }
+    });
+    } 
+    
 }
 
 

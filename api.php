@@ -25,6 +25,9 @@ if ($method <> ''){
 	else if($method=='setApproved'){
 		setApproved();
 	}
+	else if($method=='setDisapproved'){
+		setDisapproved();
+	}
 	else if($method=='deletePost'){
 		deletePost();
 	}
@@ -33,6 +36,7 @@ if ($method <> ''){
 	}
 
 }
+
 
 function db_connect() {
     if (!($db = mysql_connect(HOSTNAME . ':' . PORT, USERNAME, PASSWORD))) {
@@ -136,19 +140,48 @@ function submitPost(){
 }
 
 function setApproved(){
-	$query="UPDATE post SET approve=1";
-	if ($db = db_connect()) {
-		$res = mysql_query($query,$db);
-		if($res){
-			$row = mysql_fetch_assoc($res);
-			echo '{"result":"OK","setApproved":[';
-			echo json_encode($row);
-			echo ']}';
-		}
-		else{
-			echo '{"result":"ERROR", "error_message":"'.mysql_error().'"}';
+	if (isset($_POST['id'])) $id = $_POST['id'];
+	if($id<>''){
+		$query="UPDATE post SET approved=1 WHERE id='".$id."' ";
+		if ($db = db_connect()) {
+			$res = mysql_query($query,$db);
+			if($res){
+				$row = mysql_fetch_assoc($res);
+				echo '{"result":"OK","setApproved":[';
+				echo json_encode($row);
+				echo ']}';
+			}
+			else{
+				echo '{"result":"ERROR", "error_message":"'.mysql_error().'"}';
+			}
 		}
 	}
+	else{
+		echo '{"result":"ERROR", "error_message":"missing_parameter"}';
+	}
+	
+}
+function setDisapproved(){
+	if (isset($_POST['id'])) $id = $_POST['id'];
+	if($id<>''){
+		$query="UPDATE post SET approved=-1 WHERE id='".$id."'";
+		if ($db = db_connect()) {
+			$res = mysql_query($query,$db);
+			if($res){
+				$row = mysql_fetch_assoc($res);
+				echo '{"result":"OK","setApproved":[';
+				echo json_encode($row);
+				echo ']}';
+			}
+			else{
+				echo '{"result":"ERROR", "error_message":"'.mysql_error().'"}';
+			}
+		}
+	}
+	else{
+		echo '{"result":"ERROR", "error_message":"missing_parameter"}';
+	}
+	
 }
 
 function deletePost(){
