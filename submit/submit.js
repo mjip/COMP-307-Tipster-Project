@@ -93,8 +93,8 @@ window.onload = function (){
 	  	buttons: [{
 	  		text: 'Submit',
 	  		handler: function(){
-				document.write(escape('title'));
-                		document.write(escape('tip'));
+				document.write(escape(title));
+                		document.write(escape(tip));
 	  			myForm.submit({
                 params: {
                     method: 'submitPost',
