@@ -104,6 +104,11 @@ window.onload = function (){
                 },
                 
                 success: function(result, status, xhr){
+                    //alert(JSON.parse(result));
+                    if(JSON.parse(result).result==='OK'){
+                        alert("Thank you for reporting the incident");
+                    }
+                    
                    location.reload();
       
                 },
