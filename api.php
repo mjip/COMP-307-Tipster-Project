@@ -2,8 +2,8 @@
 //Connect to DB
 define('HOSTNAME', 			'localhost');
 define('NAME', 				'Tipster');
-define('USERNAME', 			'a');
-define('PASSWORD', 			'2MZv4n3zEcbuRatT');
+define('USERNAME', 			'root');
+define('PASSWORD', 			'');
 define('PORT', 				'');
 
 $method='';

@@ -5,7 +5,7 @@ window.onload = function(){
         height: 220,
         inputWidth: 200,
         labelWidth: 75,
-        url: 'http://localhost/tipster/api.php',
+        url: 'https://localhost/tipster/api.php',
         method: 'POST',
         defaults: {
             type: 'string'
@@ -36,7 +36,7 @@ window.onload = function(){
                         console.log(result);
                         obj = JSON.parse(result);
                         if (obj.result == 'OK') {
-                            window.location = 'http://localhost/tipster/admin/admin.html';
+                            window.location = 'https://localhost/tipster/admin/admin.html';
                         }
                         else {
                             alert("Incorrect Login Info");

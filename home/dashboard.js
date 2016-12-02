@@ -9,7 +9,7 @@ function prepareList() {
     
     $.ajax({    
         type: "POST",
-        url: "http://localhost/tipster/api.php",
+        url: "https://localhost/tipster/api.php",
         data: "method=getApprovedPosts",
         success: function(response){
             var result=JSON.parse(response);     

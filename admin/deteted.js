@@ -54,7 +54,7 @@ function getPosts() {
       
     $.ajax({    
         type: "POST",
-        url: "http://localhost/tipster/api.php",
+        url: "https://localhost/tipster/api.php",
         data: "method=getDisapprovedPosts",
         success: function(response){
             var result=JSON.parse(response);     
@@ -88,7 +88,7 @@ function deletePost(i,bool){
         if(bool===true){
         $.ajax({    
         type: "POST",
-        url: "http://localhost/tipster/api.php",
+        url: "https://localhost/tipster/api.php",
         data: 'method=setApproved'+'&id='+i,
         success: function(response){
             var result=JSON.parse(response);     
@@ -103,7 +103,7 @@ function deletePost(i,bool){
         
         $.ajax({    
         type: "POST",
-        url: "http://localhost/tipster/api.php",
+        url: "https://localhost/tipster/api.php",
         data: 'method=deletePost'+'&id='+i,
         success: function(response){
             var result=JSON.parse(response);     

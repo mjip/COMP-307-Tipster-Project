@@ -28,7 +28,7 @@ window.onload = function (){
 	  	height: 440,
 	  	inputWidth: 220,
 	  	labelWidth: 100,
-	  	url: 'http://localhost/tipster/api.php',
+	  	url: 'https://localhost/tipster/api.php',
 	  	method: 'POST',
 	  	defaults: {
 	  		type: 'string'
