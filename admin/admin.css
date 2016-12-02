@@ -246,3 +246,13 @@ footer {
     text-decoration: none;
     color: #ffffff;
 }
+ th, td 
+        {
+            font:12px Verdana;
+            background-color:white;
+            
+        }
+        table#tab th {
+            background-color: black;
+            color: white;
+        }

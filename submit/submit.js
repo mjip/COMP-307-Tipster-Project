@@ -69,25 +69,25 @@ window.onload = function (){
 	  		value: 'other',
 	  		items: [{
 	  			text: 'Theft',
-	  			value: 'theft'
+	  			value: 0
 	  		},{
 	  			text: 'Scam',
-	  			value: 'scam'
+	  			value: 1
 	  		},{
 	  			text: 'Harassment',
-	  			value: 'harassment'
+	  			value: 2
 	  		},{
 	  			text: 'Break-In',
-	  			value: 'breakin'
+	  			value: 3
 	  		},{
 	  			text: 'Sexual Assault',
-	  			value: 'sa'
+	  			value: 4
 	  		},{
 	  			text: 'Physical Assault',
-	  			value: 'pa'
+	  			value: 5
 	  		},{
 	  			text: 'Other',
-	  			value: 'other'
+	  			value: 6
 	  		}]
 	  	}],
 	  	buttons: [{
@@ -104,14 +104,12 @@ window.onload = function (){
                 },
                 
                 success: function(result, status, xhr){
-                    alert(JSON.parse(result).result);
-                    this.clear();
+                   location.reload();
       
                 },
                 error: function(xhr,status,error){
                 }
             });
-	  			//this.clear();
 	  		}
 	  	}]
 	});

@@ -69,8 +69,8 @@ function getPosts() {
                 //append(id,content[k].id);
                 
                 id[i]=content[k].id ;
-                title[i]=content[k].title;
-                body[i]=content[k].body;
+                title[i]=unescape(content[k].title);
+                body[i]=unescape(content[k].body);
                 location_id[i]=content[k].location_id;
                 tag_id[i]=content[k].tag_id;
                 date_posted[i]=content[k].date_posted;
@@ -80,28 +80,26 @@ function getPosts() {
           makeTable(id,title,body,location_id,tag_id,date_posted);
         },
         error: function(xhr,rsult){  
-            alert(rsult);
         }
     });
   
 }
 function approve(i,bool){
-    if(bool===false){
+    if(bool===true){
         $.ajax({    
         type: "POST",
         url: "http://localhost/tipster/api.php",
         data: 'method=setApproved'+'&id='+i,
         success: function(response){
             var result=JSON.parse(response);     
-            alert(result.result);
+               location.reload();
             
         },
         error: function(xhr){  
-            alert(xhr);
         }
     });
     }
-    else if(bool === true){
+    else if(bool === false){
         
         $.ajax({    
         type: "POST",
@@ -109,11 +107,10 @@ function approve(i,bool){
         data: 'method=setDisapproved'+'&id='+i,
         success: function(response){
             var result=JSON.parse(response);     
-            alert(result.result);
+            location.reload();
             
         },
         error: function(xhr){  
-            alert(xhr);
         }
     });
     } 

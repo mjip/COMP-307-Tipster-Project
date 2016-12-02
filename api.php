@@ -19,6 +19,9 @@ if ($method <> ''){
 	else if($method=='getUnapprovedPosts'){
 		getUnapprovedPosts();
 	}
+	else if($method=='getDisapprovedPosts'){
+		getDisapprovedPosts();
+	}
 	else if($method=='submitPost'){
 		submitPost();
 	}
@@ -75,7 +78,13 @@ function login(){
 }
 
 function getApprovedPosts(){
-	$query="SELECT id,title,body,date_posted,location_id,tag_id FROM post WHERE approved= 1 ";
+	$query="SELECT id,title,body,date_posted,
+			(SELECT  name_borough FROM    geolocations
+	        WHERE   (geolocations.id = post.location_id)) 
+			As location_id,(SELECT  tag_value FROM    tags
+	        WHERE   (tags.id = post.tag_id)) 
+			As tag_id
+			 FROM post WHERE approved= 1 ";
 		if ($db = db_connect()) {		
 			$res = mysql_query($query,$db);
 			if (mysql_num_rows($res) > 0) {
@@ -94,7 +103,13 @@ function getApprovedPosts(){
 		}
 }
 function getUnapprovedPosts(){
-	$query="SELECT id,title,body,date_posted,location_id,tag_id FROM post WHERE approved= 0 ";
+	$query="SELECT id,title,body,date_posted,
+			(SELECT  name_borough FROM    geolocations
+	        WHERE   (geolocations.id = post.location_id)) 
+			As location_id,(SELECT  tag_value FROM    tags
+	        WHERE   (tags.id = post.tag_id)) 
+			As tag_id
+			 FROM post WHERE approved= 0 ";
 		if ($db = db_connect()) {		
 			$res = mysql_query($query,$db);
 			if (mysql_num_rows($res) > 0) {
@@ -108,6 +123,30 @@ function getUnapprovedPosts(){
 
 			} else{
 				echo '{"result":"OK","getUnapprovedPosts":[]}';
+			}
+		}
+}
+function getDisapprovedPosts(){
+	$query="SELECT id,title,body,date_posted,
+			(SELECT  name_borough FROM    geolocations
+	        WHERE   (geolocations.id = post.location_id)) 
+			As location_id,(SELECT  tag_value FROM    tags
+	        WHERE   (tags.id = post.tag_id)) 
+			As tag_id
+			 FROM post WHERE approved= -1 ";
+		if ($db = db_connect()) {		
+			$res = mysql_query($query,$db);
+			if (mysql_num_rows($res) > 0) {
+					echo '{"result":"OK","getDisapprovedPosts":[';
+					$sep = '';
+					while ($row = mysql_fetch_assoc($res)) {
+						echo $sep . json_encode($row);
+						$sep = ',';
+					}
+					echo ']}';
+
+			} else{
+				echo '{"result":"OK","getDisapprovedPosts":[]}';
 			}
 		}
 }
@@ -169,7 +208,7 @@ function setDisapproved(){
 			$res = mysql_query($query,$db);
 			if($res){
 				$row = mysql_fetch_assoc($res);
-				echo '{"result":"OK","setApproved":[';
+				echo '{"result":"OK","setDisapproved":[';
 				echo json_encode($row);
 				echo ']}';
 			}
