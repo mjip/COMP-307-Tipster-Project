@@ -41,15 +41,14 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         td = tr.insertCell();
         td.appendChild(button);
         td.appendChild(notok);
-        //td.appendChild(document.createTextNode(id[i]));
-        //td = tr.insertCell();
-        
-        //td = tr.insertCell();
-        //td.appendChild(document.createTextNode(location[i]));
     }
     
     
     div.appendChild(tbl);
+    if(id.length==0){
+        div.appendChild(document.createTextNode("No pending posts"));
+    }
+        
         
 }
 function getPosts() {

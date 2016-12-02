@@ -10,7 +10,7 @@
  	<link rel="stylesheet" href="admin.css">
 
  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type= "text/javascript" src="admin.js"></script>
+	<script type= "text/javascript" src="approved.js"></script>
 </head>
 
 <body>
@@ -76,69 +76,21 @@
 	</div>
 
 	<div id="feed">
-		<div id="posts">
-			<div id="buttons">
-				<form action="" method="post">
-					<button type="submit" id="del">X</button>
-					<button type="submit" id="conf">O</button>
-				</form>
-			</div>
-			<p id="post-title">Post 1</p>
-			<p id="post-byline">posted on Tuesday, November 22, 2016 at 7:58PM</p>
-			<p id="post">Lorem ipsum</p>
-		</div>
-		<hr>
-		<div id="posts">
-			<div id="buttons">
-				<form action="" method="post">
-					<button type="submit" id="del">X</button>
-					<button type="submit" id="conf">O</button>
-				</form>
-			</div>
-			<p id="post-title">Post 2</p>
-			<p id="post-byline">posted on Tuesday, November 22, 2016 at 7:58PM</p>
-			<p id="post">Lorem ipsum</p>
-		</div>
-		<hr>
-		<div id="posts">
-			<div id="buttons">
-				<form action="" method="post">
-					<button type="submit" id="del">X</button>
-					<button type="submit" id="conf">O</button>
-				</form>
-			</div>
-			<p id="post-title">Post 3</p>
-			<p id="post-byline">posted on Tuesday, November 22, 2016 at 7:58PM</p>
-			<p id="post">Lorem ipsum</p>
-		</div>
-		<hr>
-		<div id="posts">
-			<div id="buttons">
-				<form action="" method="post">
-					<button type="submit" id="del">X</button>
-					<button type="submit" id="conf">O</button>
-				</form>
-			</div>
-			<p id="post-title">Post 4</p>
-			<p id="post-byline">posted on Tuesday, November 22, 2016 at 7:58PM</p>
-			<p id="post">Lorem ipsum</p>
-		</div>
-		<hr>
-		<div id="posts">
-			<div id="buttons">
-				<form action="" method="post">
-					<button type="submit" id="del">X</button>
-					<button type="submit" id="conf">O</button>
-				</form>
-			</div>
-			<p id="post-title">Post 5</p>
-			<p id="post-byline">posted on Tuesday, November 22, 2016 at 7:58PM</p>
-			<p id="post">Lorem ipsum</p>
-		</div>
-		<hr>
 		<br />
 		<br />
-	</div>
+                <table id="tab">
+                    <tr id="titles">
+                  <th>Title</th>
+                  <th>Body</th>
+                  <th>Date</th>
+                  <th>Delete?</th>
+                </tr>
+                <tr>
+                    <div id="showData"> </div>
+                </tr>
+                
+                
+                </table>
 </div>
 </div>
 <footer>

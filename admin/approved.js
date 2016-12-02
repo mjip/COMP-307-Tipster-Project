@@ -20,14 +20,6 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         td = tr.insertCell();
         td.appendChild(document.createTextNode(date_posted[i]));
         
-        var button = document.createElement("input");
-        button.type = "button";
-        button.value = "Override";
-        button.onclick = (function(a) {
-            return function() {
-               deletePost(a,true);
-            };
-        })(id[i]);
 
         var notok = document.createElement("input");
         notok.type = "button";
@@ -35,18 +27,17 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         notok.style.color='red';
         notok.onclick = (function(a) {
             return function() {
-               deletePost(a,false);
+               deletePost(a);
             };
         })(id[i]);
         td = tr.insertCell();
-        td.appendChild(button);
         td.appendChild(notok);
     }
     
     
     div.appendChild(tbl);
     if(id.length==0){
-        div.appendChild(document.createTextNode("No pending posts"));
+        div.appendChild(document.createTextNode("No approved posts"));
     }
         
 }
@@ -55,10 +46,10 @@ function getPosts() {
     $.ajax({    
         type: "POST",
         url: "http://localhost/tipster/api.php",
-        data: "method=getDisapprovedPosts",
+        data: "method=getApprovedPosts",
         success: function(response){
             var result=JSON.parse(response);     
-            var content=JSON.parse(response).getDisapprovedPosts;
+            var content=JSON.parse(response).getApprovedPosts;
             var k;
             var i=0;
             
@@ -83,28 +74,15 @@ function getPosts() {
     });
   
 }
-function deletePost(i,bool){
+function deletePost(i){
    
-        if(bool===true){
-        $.ajax({    
-        type: "POST",
-        url: "http://localhost/tipster/api.php",
-        data: 'method=setApproved'+'&id='+i,
-        success: function(response){
-            var result=JSON.parse(response);     
-               location.reload();
-            
-        },
-        error: function(xhr){  
-        }
-    });
-    }
-    else if(bool === false){
+
+
         
         $.ajax({    
         type: "POST",
         url: "http://localhost/tipster/api.php",
-        data: 'method=deletePost'+'&id='+i,
+        data: 'method=setDisapproved'+'&id='+i,
         success: function(response){
             var result=JSON.parse(response);     
             location.reload();
@@ -113,7 +91,7 @@ function deletePost(i,bool){
         error: function(xhr){  
         }
     });
-    } 
+    
    
 }
 
