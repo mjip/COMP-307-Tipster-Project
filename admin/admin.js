@@ -10,7 +10,7 @@ function makeTable(id,title,body,location,tag_id,date_posted){
       var div = document.getElementById("showData"),
         tbl  = document.getElementById('tab');
 
-    for(var i = 0; i < id.length; i++){
+    for(var i = id.length-1;i>=0; i--){
         var tr = tbl.insertRow();
  
         var td = tr.insertCell();

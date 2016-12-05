@@ -31,13 +31,18 @@ function prepareList() {
             }); 
             
           makeTable(id,title,body,location_id,tag_id,date_posted);
+        },
+        error: function(xhr){
+           
+            var table = document.getElementById("statTable");
+            table.appendChild( document.createTextNode("No stats to show"));
         }
     });
 };
 function makeTable(id,title,body,location,tag_id,date_posted){
       var div = document.getElementById("showData");
    
-    for(var i = 0; i < id.length; i++){
+    for(var i = id.length-1;i>=0; i--){
         var titre = document.createElement('h');
         titre.textContent=title[i];
         var date = document.createElement('date');
@@ -60,9 +65,64 @@ function makeTable(id,title,body,location,tag_id,date_posted){
         div.appendChild(lieu);
         div.appendChild(document.createElement('hr'));
     }
+    makeStats(location,tag_id);
      
         
 }
+function makeStats(location,tag_id){
+    
+    var count={} ;
+    for(var i = 0; i< location.length; i++) {
+        var num = location[i];
+        count[num] = count[num] ? count[num]+1 : 1;
+    }
+    
+    var arr= Object.keys(count);
+
+    /*
+    var noDup = location.filter(function(item, pos) {
+    return location.indexOf(item) === pos;
+    });*/
+    
+    
+    
+    var div = document.getElementById("stats");
+    var table = document.getElementById("statTable");
+     var tr = document.createElement('tr');
+
+    var bor=tr.appendChild( document.createElement('th') );
+    bor.appendChild( document.createTextNode('Boroughs') );
+    //var occ=tr.appendChild( document.createElement('th') );
+    var tot=tr.appendChild( document.createElement('th') );
+
+    
+    //occ.appendChild( document.createTextNode('#') );
+    tot.appendChild( document.createTextNode('Total') );
+    table.appendChild(tr);
+    for(var i = arr.length-1;i>=0; i--){
+      
+        var row = table.insertRow();
+        var td = row.insertCell('td');
+        var t=td.appendChild( document.createElement('th') );
+        t.appendChild(document.createTextNode(arr[i]));
+        var td = row.insertCell();
+        td.appendChild(document.createTextNode(count[arr[i]]));
+    }
+   
+    
+    
+    //var tr = table.insertRow();
+       /*
+        div.appendChild(document.createTextNode(""));
+        div.appendChild(tag);
+        div.appendChild(br);
+        div.appendChild(date);
+        div.appendChild(newParagraph);
+        div.appendChild(lieu);
+        div.appendChild(document.createElement('hr'));*/
+    
+}
 $(document).ready( function() {
     prepareList();
+    
 });
