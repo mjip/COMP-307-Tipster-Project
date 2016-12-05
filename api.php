@@ -37,6 +37,9 @@ if ($method <> ''){
 	else if($method=='test'){
 		test();
 	}
+	else if($method=='returnStats'){
+		returnStats();
+	}
 
 }
 
@@ -80,11 +83,12 @@ function login(){
 function getApprovedPosts(){
 	$query="SELECT id,title,body,date_posted,
 			(SELECT  name_borough FROM    geolocations
-	        WHERE   (geolocations.id = post.location_id)) 
-			As location_id,(SELECT  tag_value FROM    tags
-	        WHERE   (tags.id = post.tag_id)) 
-			As tag_id
-			 FROM post WHERE approved= 1 ";
+	        WHERE   (geolocations.id = post.location_id)) As location_id,
+			(SELECT  tag_value FROM    tags
+	        WHERE   (tags.id = post.tag_id)) As tag_id
+			 FROM post WHERE approved= 1 
+			 ORDER BY date_posted ASC
+			 ";
 		if ($db = db_connect()) {		
 			$res = mysql_query($query,$db);
 			if (mysql_num_rows($res) > 0) {
@@ -109,7 +113,8 @@ function getUnapprovedPosts(){
 			As location_id,(SELECT  tag_value FROM    tags
 	        WHERE   (tags.id = post.tag_id)) 
 			As tag_id
-			 FROM post WHERE approved= 0 ";
+			 FROM post WHERE approved= 0 
+			 ORDER BY date_posted ASC";
 		if ($db = db_connect()) {		
 			$res = mysql_query($query,$db);
 			if (mysql_num_rows($res) > 0) {
@@ -133,7 +138,8 @@ function getDisapprovedPosts(){
 			As location_id,(SELECT  tag_value FROM    tags
 	        WHERE   (tags.id = post.tag_id)) 
 			As tag_id
-			 FROM post WHERE approved= -1 ";
+			 FROM post WHERE approved= -1 
+			 ORDER BY date_posted ASC";
 		if ($db = db_connect()) {		
 			$res = mysql_query($query,$db);
 			if (mysql_num_rows($res) > 0) {
@@ -246,7 +252,26 @@ function test(){
 	echo $title;
 
 }
+function returnStats(){
+	$query="SELECT COUNT(location_id) AS location FROM post
+			WHERE approved= -1 ";
+		if ($db = db_connect()) {		
+			$res = mysql_query($query,$db);
+			if (mysql_num_rows($res) > 0) {
+					echo '{"result":"OK","getDisapprovedPosts":[';
+					$sep = '';
+					while ($row = mysql_fetch_assoc($res)) {
+						echo $sep . json_encode($row);
+						$sep = ',';
+					}
+					echo ']}';
 
+			} else{
+				echo '{"result":"OK","getDisapprovedPosts":[]}';
+			}
+		}
+
+}
 
 
 

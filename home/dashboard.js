@@ -97,7 +97,7 @@ function makeStats(location,tag_id){
 
     
     //occ.appendChild( document.createTextNode('#') );
-    tot.appendChild( document.createTextNode('Total') );
+    tot.appendChild( document.createTextNode('Incidents') );
     table.appendChild(tr);
     for(var i = arr.length-1;i>=0; i--){
       
